@@ -602,6 +602,12 @@ EventDeliveryManager::gather_events( bool done )
   // Stop watch for time measurements within this function
   static Stopwatch stw_local;
 
+  // Assertion that ensures that gather_events(..) is called
+  // from a single thread and NOT from a parallel OpenMP region!!!
+  // std::cout << "Number of omp threads: " << omp_get_num_threads() <<
+  // std::endl;
+  // assert( not omp_in_parallel() );
+
   stw_local.reset();
   stw_local.start();
   collocate_buffers_( done );
