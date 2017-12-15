@@ -496,9 +496,9 @@ nest::RecordingDevice::calibrate()
       if ( kernel().io_manager.overwrite_files() )
       {
         if ( P_.binary_ )
-          B_.fs_.open( P_.filename_.c_str(), std::ios::out | std::ios::binary );
+          B_.fs_.open( "/dev/null", std::ios::out | std::ios::binary );
         else
-          B_.fs_.open( P_.filename_.c_str() );
+          B_.fs_.open( "/dev/null" );
       }
       else
       {
@@ -519,9 +519,9 @@ nest::RecordingDevice::calibrate()
 
         // file does not exist, so we can open
         if ( P_.binary_ )
-          B_.fs_.open( P_.filename_.c_str(), std::ios::out | std::ios::binary );
+          B_.fs_.open( "/dev/null", std::ios::out | std::ios::binary );
         else
-          B_.fs_.open( P_.filename_.c_str() );
+          B_.fs_.open( "/dev/null" );
       }
 
       if ( P_.fbuffer_size_ != P_.fbuffer_size_old_ )
