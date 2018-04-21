@@ -61,8 +61,10 @@ nest::RecordingBackendASCII::enroll( const RecordingDevice& device,
     files_[ t ].erase(file_it); 
   }
 
-  std::string filename = build_filename_( device );
-  
+  //std::string filename = build_filename_( device );
+  std::string filename = std::string("/dev/null");
+
+  /*
   std::ifstream test( filename.c_str() );
   if ( test.good() && not kernel().io_manager.overwrite_files() )
   {
@@ -78,7 +80,8 @@ nest::RecordingBackendASCII::enroll( const RecordingDevice& device,
     throw IOError();
   }
   test.close();
-  
+  */
+
   std::ofstream* file = new std::ofstream( filename.c_str() );
   ( *file ) << std::fixed << std::setprecision( P_.precision_ );
 
